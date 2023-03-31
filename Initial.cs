@@ -1,11 +1,22 @@
-﻿namespace MHR.API.ApimAutomation
+﻿using Microsoft.Extensions.PlatformAbstractions;
+
+namespace MHR.API.ApimAutomation
 {
     public class Initial
     {
-        private readonly IConfiguration _configuration;
-    public Initial(IConfiguration configuration)
+        //private readonly IConfiguration _configuration;
+        //public Initial(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
+        public string XmlCommentsFilePath
         {
-            _configuration = configuration;
+            get
+            {
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var fileName = "MHR.API.ApimAutomation.xml";
+                return Path.Combine(basePath, fileName);
+            }
         }
     }
 }

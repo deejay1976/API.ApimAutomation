@@ -5,22 +5,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MHR.API.ApimAutomation.Models;
+using MHR.API.ApimAutomation;
 
-namespace MHR.API.ApimAutomation.Controllers
+namespace MHR.API.ApimAutomation
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AddressesController : ControllerBase
     {
         private readonly CustomerDbContext _context;
+    
+        /// Returns the price of a frame based on its dimensions.
 
+        /// <param name="Height">The height of the frame.</param>
+        /// <param name="Width">The width of the frame.</param>
+        /// <returns>The price, in dollars, of the picture frame.</returns>
+        /// <remarks> The API returns 'not valid' if the total length of frame material needed (the perimeter of the frame) is less than 20 inches and greater than 1000 inches.</remarks>
+
+     
         public AddressesController(CustomerDbContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Get all address
+        /// </summary>
+        /// <returns></returns>
 
-        // GET: api/Addresses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TblAddress>>> GetTblAddresses()
         {
@@ -30,7 +41,14 @@ namespace MHR.API.ApimAutomation.Controllers
           }
             return await _context.TblAddresses.ToListAsync();
         }
-
+        /// <summary>
+        /// Get Address for an address id
+        /// </summary>
+        /// <example>
+        /// This is test implementation
+        /// </example>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/Addresses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TblAddress>> GetTblAddress(int id)

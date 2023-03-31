@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MHR.API.ApimAutomation.Models;
+using MHR.API.ApimAutomation;
 
 namespace MHR.API.ApimAutomation.Controllers
 {
@@ -51,6 +51,12 @@ namespace MHR.API.ApimAutomation.Controllers
 
         // PUT: api/Contacts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Update the customer record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tblContact"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTblContact(int id, TblContact tblContact)
         {

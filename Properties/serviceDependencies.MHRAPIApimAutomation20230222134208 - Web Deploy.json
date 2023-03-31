@@ -1,9 +1,3 @@
 {
-  "dependencies": {
-    "apis1": {
-      "apiEndpoint": "https://az-apim-dec-poc.azure-api.net/POC",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/az-apim-dec-poc/apis/MHRAPIApimAutomation",
-      "type": "apis.azure"
-    }
-  }
+  "dependencies": {}
 }

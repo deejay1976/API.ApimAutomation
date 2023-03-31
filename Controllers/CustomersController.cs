@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MHR.API.ApimAutomation.Models;
+using MHR.API.ApimAutomation;
 
 namespace MHR.API.ApimAutomation.Controllers
 {
@@ -32,6 +32,11 @@ namespace MHR.API.ApimAutomation.Controllers
         }
 
         // GET: api/Customers/5
+        /// <summary>
+        /// Get the Customer Details based upon the customer id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TblCustomer>> GetTblCustomer(int id)
         {
@@ -51,6 +56,12 @@ namespace MHR.API.ApimAutomation.Controllers
 
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Update the customer details 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tblCustomer"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTblCustomer(int id, TblCustomer tblCustomer)
         {
@@ -82,6 +93,11 @@ namespace MHR.API.ApimAutomation.Controllers
 
         // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Add a customer
+        /// </summary>
+        /// <param name="tblCustomer"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<TblCustomer>> PostTblCustomer(TblCustomer tblCustomer)
         {
@@ -110,6 +126,11 @@ namespace MHR.API.ApimAutomation.Controllers
         }
 
         // DELETE: api/Customers/5
+        /// <summary>
+        /// Delete the customer details
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTblCustomer(int id)
         {
@@ -128,7 +149,11 @@ namespace MHR.API.ApimAutomation.Controllers
 
             return NoContent();
         }
-
+        /// <summary>
+        /// Find out if a customer exists in record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool TblCustomerExists(int id)
         {
             return (_context.TblCustomers?.Any(e => e.Id == id)).GetValueOrDefault();
